@@ -162,7 +162,8 @@ module Cisco-IOS-XE-l2vpn {
     leaf encapsulation-config {
       description
         "Data encapsulation method";
-      when 'not(../source/template/type/pseudowire)';
+      // # libyang err : When condition cyclic dependency on the node "source". (Schema location "/Cisco-IOS-XE-native:native/interface/pseudowire/Cisco-IOS-XE-l2vpn:encapsulation-config".)
+      // when 'not(../source/template/type/pseudowire)';
       type enumeration {
         enum l2tpv3;
         enum mpls;
