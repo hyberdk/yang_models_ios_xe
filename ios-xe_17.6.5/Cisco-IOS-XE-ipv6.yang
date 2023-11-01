@@ -1,4 +1,5 @@
 submodule Cisco-IOS-XE-ipv6 {
+  yang-version 1.1;
   belongs-to Cisco-IOS-XE-native {
     prefix ios;
   }
@@ -444,9 +445,10 @@ submodule Cisco-IOS-XE-ipv6 {
             "Configure static route for a VPN Routing/Forwarding instance";
           key "name";
           leaf name {
-            must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "VRF must be created 1st, deleted last";
-            }
+            // pyang: Cisco-IOS-XE-native.yang:2504 (at Cisco-IOS-XE-ipv6.yang:447): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ipv6"
+            // must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
+            //   error-message "VRF must be created 1st, deleted last";
+            // }
             type string;
           }
           uses ipv6-route-grouping-min-elements;
@@ -466,11 +468,12 @@ submodule Cisco-IOS-XE-ipv6 {
                 "IPv6 Routing table";
               key "name interface ipv6";
               leaf name {
-                must "(/ios:native/ios:vrf/ios:definition[ios:name=current()] and
-                       /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv6) or
-                       /ios:native/ios:ip/ios:vrf[ios:name=current()]" {
-                  error-message "IPv6 routing table vrf does not exist";
-                }
+                // pyang: Cisco-IOS-XE-native.yang:2504 (at Cisco-IOS-XE-ipv6.yang:471): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ipv6"
+                // must "(/ios:native/ios:vrf/ios:definition[ios:name=current()] and
+                //        /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv6) or
+                //        /ios:native/ios:ip/ios:vrf[ios:name=current()]" {
+                //   error-message "IPv6 routing table vrf does not exist";
+                // }
                 type string;
               }
               uses ipv6-bfd-unassociate-grouping;

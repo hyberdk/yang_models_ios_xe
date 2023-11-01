@@ -1,4 +1,5 @@
 submodule Cisco-IOS-XE-logging {
+  yang-version 1.1;
   belongs-to Cisco-IOS-XE-native {
     prefix ios;
   }
@@ -227,18 +228,18 @@ submodule Cisco-IOS-XE-logging {
           leaf profile {
             description
               "Specify the TLS profile";
-            must '/ios:native/ios:logging/ios:tls-profile[ios:profile=current()]' {
-              error-message "Profile must be created 1st, deleted last";
-            }
+            // must '/ios:native/ios:logging/ios:tls-profile[ios:profile=current()]' {      // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:230): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+            //   error-message "Profile must be created 1st, deleted last";
+            // }
             type string;
           }
         }
         leaf profile {
           description
             "Specify the TLS profile created";
-          must '/ios:native/ios:logging/ios:tls-profile[ios:profile=current()]' {
-            error-message "Profile must be created 1st, deleted last";
-          }
+          // must '/ios:native/ios:logging/ios:tls-profile[ios:profile=current()]' {    // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:239): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+          //   error-message "Profile must be created 1st, deleted last";
+          // }
           type string;
         }
       }
@@ -665,9 +666,9 @@ submodule Cisco-IOS-XE-logging {
                       leaf name {
                         description
                           "discriminator name; string; max. 8 characters";
-                        must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {
-                          error-message "discriminator must be created at first, deleted last";
-                        }
+                        // must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {     // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:668): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+                        //   error-message "discriminator must be created at first, deleted last";
+                        // }
                         type string;
                       }
                     }
@@ -720,9 +721,9 @@ submodule Cisco-IOS-XE-logging {
           key "name";
           leaf name {
             status deprecated;
-            must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {
-              error-message "discriminator must be created at first, deleted last";
-            }
+            // must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {     // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:723): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+            //   error-message "discriminator must be created at first, deleted last";
+            // }
             type string;
           }
           leaf severity {
@@ -852,9 +853,9 @@ submodule Cisco-IOS-XE-logging {
                       leaf name {
                         description
                           "discriminator name; string; max. 8 characters";
-                        must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {
-                          error-message "discriminator must be created at first, deleted last";
-                        }
+                        // must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {     // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:855): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+                        //   error-message "discriminator must be created at first, deleted last";
+                        // }
                         type string;
                       }
                     }
@@ -914,9 +915,9 @@ submodule Cisco-IOS-XE-logging {
           key "name";
           leaf name {
             status deprecated;
-            must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {
-              error-message "discriminator must be created at first, deleted last";
-            }
+            // must '/ios:native/ios:logging/ios:discriminator[ios:name=current()]' {     // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:917): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+            //   error-message "discriminator must be created at first, deleted last";
+            // }
             type string;
           }
           leaf severity {
@@ -1112,9 +1113,9 @@ submodule Cisco-IOS-XE-logging {
           leaf vrf {
             description
               "Set VRF option";
-            must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4 or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "VRF must be created 1st, deleted last";
-            }
+            // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4 or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {    // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:1115): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+            //   error-message "VRF must be created 1st, deleted last";
+            // }
             type string;
           }
           uses logging-host-option-group;
@@ -1127,9 +1128,9 @@ submodule Cisco-IOS-XE-logging {
           leaf vrf {
             description
               "Set VRF option";
-            must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4 or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "VRF must be created 1st, deleted last";
-            }
+            // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4 or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {      // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:1130): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+            //   error-message "VRF must be created 1st, deleted last";
+            // }
             type string;
           }
           uses logging-host-transport-group;
@@ -1160,9 +1161,9 @@ submodule Cisco-IOS-XE-logging {
             leaf vrf {
               description
                 "Set VRF option";
-              must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv6' {
-                error-message "VRF must be created 1st, deleted last";
-              }
+              // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv6' {    // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:1163): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+              //   error-message "VRF must be created 1st, deleted last";
+              // }
               type string;
             }
             uses logging-host-option-group;
@@ -1175,9 +1176,9 @@ submodule Cisco-IOS-XE-logging {
             leaf vrf {
               description
                 "Set VRF option";
-              must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv6' {
-                error-message "VRF must be created 1st, deleted last";
-              }
+              // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv6' {      // pyang: Cisco-IOS-XE-native.yang:2801 (at Cisco-IOS-XE-logging.yang:1178): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-logging"
+              //   error-message "VRF must be created 1st, deleted last";
+              // }
               type string;
             }
             uses logging-host-transport-group;

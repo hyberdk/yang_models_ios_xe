@@ -1,4 +1,5 @@
 submodule Cisco-IOS-XE-ip {
+  yang-version 1.1;
   belongs-to Cisco-IOS-XE-native {
     prefix ios;
   }
@@ -1598,11 +1599,11 @@ submodule Cisco-IOS-XE-ip {
           "Source VRF name";
         key "name source_ip";
         leaf name {
-          must "(/ios:native/ios:vrf/ios:definition[ios:name=current()] and
-                 /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or
-                 /ios:native/ios:ip/ios:vrf[ios:name=current()]" {
-            error-message "% vrf does not exist. Create first";
-          }
+          // must "(/ios:native/ios:vrf/ios:definition[ios:name=current()] and      // pyang: Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1603): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+          //        /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or
+          //        /ios:native/ios:ip/ios:vrf[ios:name=current()]" {
+          //   error-message "% vrf does not exist. Create first";
+          // }
           type string;
         }
         leaf source_ip {
@@ -1810,57 +1811,75 @@ submodule Cisco-IOS-XE-ip {
         type inet:ipv4-address;
         type string;
       }
-      must "not (starts-with(., 'Dialer')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Dialer interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'Loopback')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Loopback interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'Tunnel')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Tunnel interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'Port-channel')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Port-channel interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'Vlan')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Vlan interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'LISP')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "LISP interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'Virtual-Template')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Virtual-Template interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'BDI')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "BDI interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'Ethernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "Ethernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'FastEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "FastEthernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'GigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "GigabitEthernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'TenGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "TenGigabitEthernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'FiveGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "FiveGigabitEthernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'TwentyFiveGigE')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "TwentyFiveGigE interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'TwoGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "TwoGigabitEthernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'FortyGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "FortyGigabitEthernet interface must be created first and deleted last.";
-      }
-      must "not (starts-with(., 'HundredGigE')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
-        error-message "HundredGigE interface must be created first and deleted last.";
-      }
+      // pyang:
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1813): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1816): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1819): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1822): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1825): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1828): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1831): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1834): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1837): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1840): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1843): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1846): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1849): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1852): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1855): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1858): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:1861): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+      // must "not (starts-with(., 'Dialer')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Dialer interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'Loopback')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Loopback interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'Tunnel')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Tunnel interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'Port-channel')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Port-channel interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'Vlan')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Vlan interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'LISP')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "LISP interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'Virtual-Template')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Virtual-Template interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'BDI')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "BDI interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'Ethernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "Ethernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'FastEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "FastEthernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'GigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "GigabitEthernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'TenGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "TenGigabitEthernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'FiveGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "FiveGigabitEthernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'TwentyFiveGigE')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "TwentyFiveGigE interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'TwoGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "TwoGigabitEthernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'FortyGigabitEthernet')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "FortyGigabitEthernet interface must be created first and deleted last.";
+      // }
+      // must "not (starts-with(., 'HundredGigE')) or /ios:native/ios:interface/*[concat(local-name(), ios:name) = current()]" {
+      //   error-message "HundredGigE interface must be created first and deleted last.";
+      // }
     }
   }
 
@@ -3162,11 +3181,12 @@ submodule Cisco-IOS-XE-ip {
                 "Destination VRF name";
               key "name";
               leaf name {
-                must "(/ios:native/ios:vrf/ios:definition[ios:name=current()] and
-                       /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or
-                       /ios:native/ios:ip/ios:vrf[ios:name=current()]" {
-                  error-message "% vrf does not exist. Create first";
-                }
+                // pyang: Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:3185): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+                // must "(/ios:native/ios:vrf/ios:definition[ios:name=current()] and
+                //        /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or
+                //        /ios:native/ios:ip/ios:vrf[ios:name=current()]" {
+                //   error-message "% vrf does not exist. Create first";
+                // }
                 type string;
               }
               uses ip-route-static-bfd-ip-grouping;
@@ -3220,9 +3240,10 @@ submodule Cisco-IOS-XE-ip {
             "Configure static route for a VPN Routing/Forwarding instance";
           key "name";
           leaf name {
-            must '(/ios:native/ios:vrf/ios:definition[ios:name=current()] and /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "Please create ipv4 vrf first, and delete the last";
-            }
+            // pyang: Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:3242): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+            // must '(/ios:native/ios:vrf/ios:definition[ios:name=current()] and /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
+            //   error-message "Please create ipv4 vrf first, and delete the last";
+            // }
             type string;
           }
           list topology {
@@ -3722,9 +3743,10 @@ submodule Cisco-IOS-XE-ip {
           leaf vrf {
             description
               "Configure ipsec route for a VPN Routing/Forwarding instance";
-            must '(/ios:native/ios:vrf/ios:definition[ios:name=current()] and /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "Please create ipv4 vrf first, and delete the last";
-            }
+            // pyang: Cisco-IOS-XE-native.yang:2482 (at Cisco-IOS-XE-ip.yang:3744): warning: node "Cisco-IOS-XE-native::native" is not found in module "Cisco-IOS-XE-ip"
+            // must '(/ios:native/ios:vrf/ios:definition[ios:name=current()] and /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4) or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
+            //   error-message "Please create ipv4 vrf first, and delete the last";
+            // }
             type string;
           }
           leaf ipaddr {
