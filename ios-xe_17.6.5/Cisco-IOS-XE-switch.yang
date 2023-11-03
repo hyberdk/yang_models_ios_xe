@@ -3632,12 +3632,13 @@ module Cisco-IOS-XE-switch {
     uses ios-dt:config-interface-switchport-device-tracking-grouping;
   }
 
-  augment "/ios:native/ios:interface/ios:TwentyFiveGigabitEthernet/ios:switchport" {
-    status deprecated;
-    uses config-interface-switchport-grouping-deprecated {
-      status deprecated;
-    }
-  }
+  // # conflict with "obsolete" status of parent "switchport"
+  // augment "/ios:native/ios:interface/ios:TwentyFiveGigabitEthernet/ios:switchport" {
+  //   status deprecated;
+  //   uses config-interface-switchport-grouping-deprecated {
+  //     status deprecated;
+  //   }
+  // }
 
   augment "/ios:native/ios:interface/ios:TwentyFiveGigE/ios:switchport" {
     status deprecated;
@@ -3695,12 +3696,13 @@ module Cisco-IOS-XE-switch {
     uses ios-dt:config-interface-device-tracking-grouping;
   }
 
-  augment "/ios:native/ios:interface/ios:TwentyFiveGigabitEthernet" {
-    status deprecated;
-    uses config-interface-switch-grouping {
-      status deprecated;
-    }
-  }
+  // # libyang err : Status "deprecated" of "<uses>" is in conflict with "obsolete" status of parent "TwentyFiveGigabitEthernet". (Path "/Cisco-IOS-XE-switch:{augment='/ios:native/ios:interface/ios:TwentyFiveGigabitEthernet'}/{uses='config-interface-switch-grouping'}".)
+  // augment "/ios:native/ios:interface/ios:TwentyFiveGigabitEthernet" {
+  //   status deprecated;
+  //   uses config-interface-switch-grouping {
+  //     status deprecated;
+  //   }
+  // }
 
   augment "/ios:native/ios:interface/ios:TwentyFiveGigE" {
     uses config-interface-switch-grouping;

@@ -539,15 +539,16 @@ module Cisco-IOS-XE-nd {
       container default-policy {
         uses config-interface-ipv6-nd-raguard-vlan-grouping;
       }
-      leaf attach-policy {
-        status deprecated;
-        description
-          "Apply a policy for feature RA guard";
-        type string;
-        must '(/ios:native/ios:ipv6/ios:nd/ios-nd:raguard/ios-nd:policy[ios-nd:raguard-policy-name=current()])' {
-          error-message "Create raguard policy first, then attach policy; Detach policy from interface before removing the policy";
-        }
-      }
+      // # libyang err : Status "deprecated" of "attach-policy" is in conflict with "obsolete" status of parent "raguard". (Path "/Cisco-IOS-XE-nd:{augment='/ios:native/ios:interface/ios:TwentyFiveGigabitEthernet/ios:ipv6/ios:nd'}/{uses='config-interface-ipv6-nd-grouping'}/Cisco-IOS-XE-nd:raguard/attach-policy".)
+      // leaf attach-policy {
+      //   status deprecated;
+      //   description
+      //     "Apply a policy for feature RA guard";
+      //   type string;
+      //   must '(/ios:native/ios:ipv6/ios:nd/ios-nd:raguard/ios-nd:policy[ios-nd:raguard-policy-name=current()])' {
+      //     error-message "Create raguard policy first, then attach policy; Detach policy from interface before removing the policy";
+      //   }
+      // }
     }
     container autoconfig {
       description

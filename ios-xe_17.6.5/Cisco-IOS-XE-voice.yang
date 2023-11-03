@@ -2329,7 +2329,8 @@ module Cisco-IOS-XE-voice {
           }
         }
         uses config-dtmf-relay-grouping {
-          when "type = 'voip' and session[protocol='sipv2']";
+          // # libyang err : When condition cyclic dependency on the node "voice". (Schema location "/Cisco-IOS-XE-native:native/Cisco-IOS-XE-voice:dial-peer/voice/session".)
+          // when "type = 'voip' and session[protocol='sipv2']";
         }
         list trunkgroup {
           description

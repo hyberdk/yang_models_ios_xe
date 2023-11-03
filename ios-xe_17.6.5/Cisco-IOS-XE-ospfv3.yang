@@ -8666,7 +8666,8 @@ module Cisco-IOS-XE-ospfv3 {
           description
             "Enable all traps of state-change";
           type empty;
-          when 'not (../traps/if-state-change) and not (../traps/neighbor-restart-helper-status-change) and not (../traps/neighbor-state-change) and not (../traps/nssa-translator-status-change) and not (../traps/restart-status-change) and not (../traps/virtif-state-change) and  not (../traps/virtneighbor-restart-helper-status-change) and not (../traps/virtneighbor-state-change)';
+          // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospfv3:ospfv3-config/state-change/enable".)
+          // when 'not (../traps/if-state-change) and not (../traps/neighbor-restart-helper-status-change) and not (../traps/neighbor-state-change) and not (../traps/nssa-translator-status-change) and not (../traps/restart-status-change) and not (../traps/virtif-state-change) and  not (../traps/virtneighbor-restart-helper-status-change) and not (../traps/virtneighbor-state-change)';
         }
         container traps {
           description
@@ -8724,7 +8725,8 @@ module Cisco-IOS-XE-ospfv3 {
           description
             "Enable all traps of errors";
           type empty;
-          when 'not (../traps/bad-packet) and not (../traps/config-error) and not (../traps/virt-bad-packet) and not (../traps/virt-config-error)';
+          // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospfv3:ospfv3-config/state-change/enable".)
+          // when 'not (../traps/bad-packet) and not (../traps/config-error) and not (../traps/virt-bad-packet) and not (../traps/virt-config-error)';
         }
         container traps {
           description

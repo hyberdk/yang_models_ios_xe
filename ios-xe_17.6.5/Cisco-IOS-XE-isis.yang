@@ -3019,7 +3019,8 @@ module Cisco-IOS-XE-isis {
         }
       }
       container acl {
-        when 'not(../gateway-or-prefix/options) and not(../route-map/name)';
+        // # libyang err : When condition cyclic dependency on the node "route-map". (Schema location "/Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-isis:isis-container/isis/distribute-list/gateway-or-prefix".)
+        // when 'not(../gateway-or-prefix/options) and not(../route-map/name)';
         leaf acl-name {
           type ios-types:access-list-standard-id-type-non-default;
         }
@@ -3030,7 +3031,8 @@ module Cisco-IOS-XE-isis {
         }
       }
       container gateway-or-prefix {
-        when 'not(../route-map/name) and not(../acl/acl-name)';
+        // # libyang err : When condition cyclic dependency on the node "route-map". (Schema location "/Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-isis:isis-container/isis/distribute-list/gateway-or-prefix".)
+        // when 'not(../route-map/name) and not(../acl/acl-name)';
         leaf options {
           type enumeration {
             enum gateway;
