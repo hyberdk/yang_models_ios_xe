@@ -1,4 +1,5 @@
 submodule Cisco-IOS-XE-interfaces {
+  yang-version 1.1;
   belongs-to Cisco-IOS-XE-native {
     prefix ios;
   }
@@ -369,6 +370,8 @@ submodule Cisco-IOS-XE-interfaces {
       "Initial revision";
   }
 
+  uses config-interface-grouping;
+
   grouping nve-member-vni-mcast-group-grouping {
     container mcast-group {
       leaf multicast-group-min {
@@ -603,7 +606,7 @@ submodule Cisco-IOS-XE-interfaces {
       default "aggregate";
     }
     leaf physical-interface {
-      must '/ios:native/ios:interface/*[concat(local-name(.), ios:name) = current()]';
+      // must '/ios:native/ios:interface/*[concat(local-name(.), ios:name) = current()]';
       type string;
     }
   }
@@ -1579,12 +1582,12 @@ submodule Cisco-IOS-XE-interfaces {
         leaf forwarding {
           description
             "Configure forwarding table";
-          must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
-            error-message "VRF must be created 1st, deleted last";
-          }
-          must 'not(../../ip/address) or /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4' {
-            error-message "Address-family ipv4 in VRF must be created 1st, deleted last";
-          }
+          // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
+          //   error-message "VRF must be created 1st, deleted last";
+          // }
+          // must 'not(../../ip/address) or /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4' {
+          //   error-message "Address-family ipv4 in VRF must be created 1st, deleted last";
+          // }
           must "not (../../switchport-conf/switchport) or (../../switchport-conf/switchport = 'false')" {
             error-message "To configure vrf forwarding, set switchport to false 1st; To change switchport from false to true, delete vrf forwarding 1st";
           }
@@ -1594,9 +1597,9 @@ submodule Cisco-IOS-XE-interfaces {
           description
             "Configure different VRF for downstream traffic";
           when '../forwarding';
-          must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
-            error-message "VRF must be created 1st, deleted last";
-          }
+          // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
+          //   error-message "VRF must be created 1st, deleted last";
+          // }
           type string;
         }
       }
@@ -1741,12 +1744,12 @@ submodule Cisco-IOS-XE-interfaces {
         leaf unnumbered {
           description
             "Enable IP processing without an explicit address";
-          must "starts-with(., 'Dialer') and  (number(substring-after(., 'Dialer')) = /ios:native/ios:interface/ios:Dialer/ios:name) or not (starts-with(., 'Dialer'))" {
-            error-message "To use a Dialer interface, the Dialer interface has to be configured 1st, vice versa for delete";
-          }
-          must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
-            error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
-          }
+          // must "starts-with(., 'Dialer') and  (number(substring-after(., 'Dialer')) = /ios:native/ios:interface/ios:Dialer/ios:name) or not (starts-with(., 'Dialer'))" {
+          //   error-message "To use a Dialer interface, the Dialer interface has to be configured 1st, vice versa for delete";
+          // }
+          // must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
+          //   error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
+          // }
           type string;
         }
         container address {
@@ -1918,9 +1921,9 @@ submodule Cisco-IOS-XE-interfaces {
           leaf vrf {
             description
               "VRF name for helper-address (if different from interface VRF)";
-            must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "VRF must be created 1st, deleted last";
-            }
+            // must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
+            //   error-message "VRF must be created 1st, deleted last";
+            // }
             type string;
           }
         }
@@ -2240,9 +2243,9 @@ submodule Cisco-IOS-XE-interfaces {
       leaf unnumbered {
         description
           "Preferred interface for source address selection";
-        must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
-          error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
-        }
+        // must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
+        //   error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
+        // }
         type string;
       }
       leaf enable {
@@ -3942,9 +3945,9 @@ submodule Cisco-IOS-XE-interfaces {
         list L2LISP {
           key "name";
           leaf name {
-            must "/ios:native/ios:interface/ios:L2LISP[ios:name=number(substring-before(current(), '.'))]" {
-              error-message "To create a L2LISP subinterface, the L2LISP interface needs to be created 1st; vice versa for delete.";
-            }
+            // must "/ios:native/ios:interface/ios:L2LISP[ios:name=number(substring-before(current(), '.'))]" {
+            //   error-message "To create a L2LISP subinterface, the L2LISP interface needs to be created 1st; vice versa for delete.";
+            // }
             type string {
               pattern '[0-9]*(. ?[1-9][0-9]*)*';
             }
@@ -4029,9 +4032,9 @@ submodule Cisco-IOS-XE-interfaces {
               leaf vrf {
                 description
                   "Specify a particular VRF";
-                must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-                  error-message "VRF must be created 1st, deleted last";
-                }
+                // must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
+                //   error-message "VRF must be created 1st, deleted last";
+                // }
                 type string;
               }
             }
@@ -4153,9 +4156,9 @@ submodule Cisco-IOS-XE-interfaces {
         list Port-channel {
           key "name";
           leaf name {
-            must "/ios:native/ios:interface/ios:Port-channel[ios:name=number(substring-before(current(), '.'))]" {
-              error-message "To create a Port-channel subinterface, the Port-channel interface needs to be created 1st; vice versa for delete.";
-            }
+            // must "/ios:native/ios:interface/ios:Port-channel[ios:name=number(substring-before(current(), '.'))]" {
+            //   error-message "To create a Port-channel subinterface, the Port-channel interface needs to be created 1st; vice versa for delete.";
+            // }
             type string {
               pattern '[1-9][0-9]*\.[1-9][0-9]*';
             }
@@ -4447,9 +4450,9 @@ submodule Cisco-IOS-XE-interfaces {
           leaf name {
             description
               "MFR interface number";
-            must "/ios:native/ios:interface/ios:MFR[ios:name=number(substring-before(current(), '.'))]" {
-              error-message "To create a MFR subinterface, the MFR interface needs to be created 1st; vice versa for delete.";
-            }
+            // must "/ios:native/ios:interface/ios:MFR[ios:name=number(substring-before(current(), '.'))]" {
+            //   error-message "To create a MFR subinterface, the MFR interface needs to be created 1st; vice versa for delete.";
+            // }
             type string;
           }
           leaf link-type {
@@ -5554,12 +5557,12 @@ submodule Cisco-IOS-XE-interfaces {
           description
             "Configure forwarding table";
           status obsolete;
-          must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
-            error-message "VRF must be created 1st, deleted last";
-          }
-          must 'not(../../ip/address) or /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4' {
-            error-message "Address-family ipv4 in VRF must be created 1st, deleted last";
-          }
+          // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
+          //   error-message "VRF must be created 1st, deleted last";
+          // }
+          // must 'not(../../ip/address) or /ios:native/ios:vrf/ios:definition[ios:name=current()]/ios:address-family/ios:ipv4' {
+          //   error-message "Address-family ipv4 in VRF must be created 1st, deleted last";
+          // }
           must "not (../../switchport-conf/switchport) or (../../switchport-conf/switchport = 'false')" {
             error-message "To configure vrf forwarding, set switchport to false 1st; To change switchport from false to true, delete vrf forwarding 1st";
           }
@@ -5570,9 +5573,9 @@ submodule Cisco-IOS-XE-interfaces {
             "Configure different VRF for downstream traffic";
           status obsolete;
           when '../forwarding';
-          must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
-            error-message "VRF must be created 1st, deleted last";
-          }
+          // must '/ios:native/ios:vrf/ios:definition[ios:name=current()]' {
+          //   error-message "VRF must be created 1st, deleted last";
+          // }
           type string;
         }
       }
@@ -5749,12 +5752,12 @@ submodule Cisco-IOS-XE-interfaces {
           description
             "Enable IP processing without an explicit address";
           status obsolete;
-          must "starts-with(., 'Dialer') and  (number(substring-after(., 'Dialer')) = /ios:native/ios:interface/ios:Dialer/ios:name) or not (starts-with(., 'Dialer'))" {
-            error-message "To use a Dialer interface, the Dialer interface has to be configured 1st, vice versa for delete";
-          }
-          must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
-            error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
-          }
+          // must "starts-with(., 'Dialer') and  (number(substring-after(., 'Dialer')) = /ios:native/ios:interface/ios:Dialer/ios:name) or not (starts-with(., 'Dialer'))" {
+          //   error-message "To use a Dialer interface, the Dialer interface has to be configured 1st, vice versa for delete";
+          // }
+          // must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
+          //   error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
+          // }
           type string;
         }
         container address {
@@ -5939,9 +5942,9 @@ submodule Cisco-IOS-XE-interfaces {
             description
               "VRF name for helper-address (if different from interface VRF)";
             status obsolete;
-            must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
-              error-message "VRF must be created 1st, deleted last";
-            }
+            // must '/ios:native/ios:vrf/ios:definition[ios:name=current()] or /ios:native/ios:ip/ios:vrf[ios:name=current()]' {
+            //   error-message "VRF must be created 1st, deleted last";
+            // }
             type string;
           }
         }
@@ -6308,9 +6311,9 @@ submodule Cisco-IOS-XE-interfaces {
         status obsolete;
         description
           "Preferred interface for source address selection";
-        must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
-          error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
-        }
+        // must "starts-with(., 'Multilink') and  (number(substring-after(., 'Multilink')) = /ios:native/ios:interface/ios:Multilink/ios:name) or not (starts-with(., 'Multilink'))" {
+        //   error-message "To use a Multilink interface, the Multilink interface has to be configured 1st, vice versa for delete";
+        // }
         type string;
       }
       leaf enable {

@@ -3677,7 +3677,8 @@ module Cisco-IOS-XE-ospf {
           description
             "Enable all traps of state-change";
           type empty;
-          when 'not (../traps/if-state-change) and not (../traps/neighbor-state-change) and not (../traps/virtif-state-change) and not (../traps/virtneighbor-state-change)';
+          // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/state-change/enable".)
+          // when 'not (../traps/if-state-change) and not (../traps/neighbor-state-change) and not (../traps/virtif-state-change) and not (../traps/virtneighbor-state-change)';
         }
         container traps {
           description
@@ -3715,7 +3716,8 @@ module Cisco-IOS-XE-ospf {
           description
             "Enable all traps of errors";
           type empty;
-          when 'not (../traps/authentication-failure) and not (../traps/bad-packet) and not (../traps/config-error) and not (../traps/virt-authentication-failure) and not (../traps/virt-bad-packet) and not (../traps/virt-config-error)';
+          // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/errors/enable".)
+          // when 'not (../traps/authentication-failure) and not (../traps/bad-packet) and not (../traps/config-error) and not (../traps/virt-authentication-failure) and not (../traps/virt-bad-packet) and not (../traps/virt-config-error)';
         }
         container traps {
           description
@@ -3783,7 +3785,8 @@ module Cisco-IOS-XE-ospf {
           description
             "Enable all traps of retransmit";
           type empty;
-          when 'not (../traps/packets) and not (../traps/virt-packets)';
+          // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/retransmit/enable".)
+          // when 'not (../traps/packets) and not (../traps/virt-packets)';
         }
         container traps {
           description
@@ -3811,7 +3814,8 @@ module Cisco-IOS-XE-ospf {
           description
             "Enable all traps of lsa";
           type empty;
-          when 'not (../traps/lsa-maxage) and not (../traps/lsa-originate)';
+          // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/cisco-specific/lsa/enable".)
+          // when 'not (../traps/lsa-maxage) and not (../traps/lsa-originate)';
         }
         container traps {
           description
@@ -3865,7 +3869,8 @@ module Cisco-IOS-XE-ospf {
             description
               "Enable all traps of errors";
             type empty;
-            when 'not (../traps/config-error) and not (../traps/shamlink/authentication) and not (../traps/shamlink/bad-packet) and not (../traps/shamlink/config) and not (../traps/virt-config-error)';
+            // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/cisco-specific/errors/enable".)
+            // when 'not (../traps/config-error) and not (../traps/shamlink/authentication) and not (../traps/shamlink/bad-packet) and not (../traps/shamlink/config) and not (../traps/virt-config-error)';
           }
           container traps {
             description
@@ -3915,7 +3920,8 @@ module Cisco-IOS-XE-ospf {
             description
               "Enable all traps of retransmit";
             type empty;
-            when 'not (../traps/packets) and not (../traps/shamlink) and not (../traps/virt-packets)';
+            // libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/cisco-specific/retransmit/enable".)
+            // when 'not (../traps/packets) and not (../traps/shamlink) and not (../traps/virt-packets)';
           }
           container traps {
             description
@@ -3948,7 +3954,8 @@ module Cisco-IOS-XE-ospf {
             description
               "Enable all traps of lsa";
             type empty;
-            when 'not (../traps/lsa-maxage) and not (../traps/lsa-originate)';
+            // # libyang err : When condition cyclic dependency on the node "traps". (Schema location "/Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/Cisco-IOS-XE-ospf:ospf-config/cisco-specific/lsa/enable".)
+            // when 'not (../traps/lsa-maxage) and not (../traps/lsa-originate)';
           }
           container traps {
             description
